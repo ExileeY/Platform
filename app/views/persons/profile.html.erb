@@ -1,0 +1,18 @@
+<h1>Профиль</h1>
+
+<table align="center" class="table table-striped" style="width: 300px;">
+	<tr>
+		<th>Имя пользователя:</th>
+		<td><%= @user.username %></td>
+	</tr>
+
+	<tr>
+		<th>Email:</th>
+		<td><%= @user.email %></td>
+	</tr>
+
+	<tr>
+		<th>Редактировать</th>
+		<td><%= link_to "Изменить данные", edit_user_registration_path(@user) %></td>
+	</tr>
+</table>
