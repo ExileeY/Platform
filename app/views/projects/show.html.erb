@@ -1,0 +1,6 @@
+<div class="container">
+	<h1>Проект: <%= @project.title %></h1>
+	<h3><%= @project.description %></h3>
+
+	<%= image_tag(@project.image.url, alt: 'Image') if @project.image? %>
+</div>

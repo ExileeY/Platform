@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="main-background"></div>
+		<div class="main-text">
+			<h1>
+				Краудфандинг в Беларуси
+				<p>платформа для финансирования бизнес-проектов, новых технологий, творчества и социальных инициатив.</p>
+			</h1>
+
+			<h3>Здесь вы получите инструменты для проведения сбора, консультации и поддержку.</h3>
+			<%= link_to "Создать проект", new_project_path, class:"btn btn-success" %>
+		</div>
+</div>
+
+<div class="container text-center">
+	<%if @projects.any?%>
+		<h4>Проекты</h4>
+		<div class="scroll-bar">
+			<table class="table table-striped">
+				<% @projects.each do |project| %>
+					<tbody>
+						<tr> 
+							<td>  <%= link_to project.title, project_path(project) %> </td>
+						</tr>
+					</tbody>
+				<% end %>
+			</table>
+		</div>
+	<%end%>
+</div>
