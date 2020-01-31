@@ -1,18 +1,33 @@
 <h1>Профиль</h1>
 
-<table align="center" class="table table-striped" style="width: 300px;">
-	<tr>
-		<th>Имя пользователя:</th>
-		<td><%= @user.username %></td>
-	</tr>
+<table align="center" class="table table-bordered">
+		<tr>
+			<th>Имя пользователя:</th>
+			<td><%= @user.username %></td>
+		</tr>
 
-	<tr>
-		<th>Email:</th>
-		<td><%= @user.email %></td>
-	</tr>
-
-	<tr>
-		<th>Редактировать</th>
-		<td><%= link_to "Изменить данные", edit_user_registration_path(@user) %></td>
-	</tr>
+		<tr>
+			<th>Email:</th>
+			<td><%= @user.email %></td>
+		</tr>
+		<%if @user == current_user%>
+			<tr>
+				<th>Редактировать</th>
+				<td><%= link_to "Изменить данные", edit_user_registration_path(@user), class:"btn btn-default", style:"border-radius: 4px; background-color: #e7e7e7; color: black;" %></td>
+			</tr>
+		<%end%>
 </table>
+
+<h1>Проекты пользователя</h1>
+<div class="scroll-bar">
+	<table class="table table-striped">
+		<% @user_projects.each do |user_project| %>
+			<tbody>
+				<tr> 
+					<td align="center">  <%= link_to user_project.title, project_path(user_project) %> </td>
+				</tr>
+			</tbody>
+		<% end %>
+	</table>
+</div>
+	

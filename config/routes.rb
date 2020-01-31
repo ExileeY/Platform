@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'persons/profile'
+  get 'profile/:user_id' => 'persons#profile', as: :profile
   devise_for :users
   resources :projects
   root 'projects#index'
