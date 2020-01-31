@@ -25,6 +25,10 @@
 			<tbody>
 				<tr> 
 					<td align="center">  <%= link_to user_project.title, project_path(user_project) %> </td>
+					<% if @user == current_user %>
+						<td align="center">  <%= link_to "Редактировать", edit_project_path(user_project) %> </td>
+						<td align="center">  <%= link_to "Удалить", user_project, method: :delete, data: {confirm: "Are you shure?"} %> </td>
+					<% end %>
 				</tr>
 			</tbody>
 		<% end %>

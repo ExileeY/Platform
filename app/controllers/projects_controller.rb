@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :load_entities
+  before_action :require_permission, only: [:edit, :destroy]
 
   def index
   	@projects = Project.all
@@ -20,8 +21,28 @@ class ProjectsController < ApplicationController
   	end
   end
 
+  def edit
+    #@project = Project.find(params[:id])
+  end
+
+  def update
+    #@project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      flash[:success] = "Changes saved"
+      redirect_to project_path(@project)
+    else
+      render 'edit'
+    end
+  end
+
   def show
   	@project = Project.find(params[:id])
+  end
+
+  def destroy
+    @project.destroy
+    flash[:success] = "Project has been deleted"
+    redirect_to profile_path(@user)
   end
 
   private
@@ -30,6 +51,13 @@ class ProjectsController < ApplicationController
 	  end
 
     def load_entities
+      @project = Project.find_by(id: params[:id])
       @user = current_user
+    end
+
+    def require_permission
+      if current_user != Project.find(params[:id]).user
+        redirect_to project_path
+      end
     end
 end
