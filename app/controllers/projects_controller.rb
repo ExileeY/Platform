@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :require_permission, only: [:edit, :destroy]
 
   def index
-  	@projects = Project.all
+  	@projects = Project.order(created_at: :desc).all
   end
 
   def new
@@ -22,11 +22,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    #@project = Project.find(params[:id])
   end
 
   def update
-    #@project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       flash[:success] = "Changes saved"
       redirect_to project_path(@project)
@@ -36,7 +34,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
-  	@project = Project.find(params[:id])
+    @comments = Comment.all
+    @project = Project.find(params[:id])
+    if user_signed_in?
+      @comment = @user.comments.new
+    end
   end
 
   def destroy

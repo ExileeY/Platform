@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "dropzone/dropzone";
 
 body {
     background-image: url('https://assets.awwwards.com/awards/images/2015/04/pattern.jpg');
@@ -75,4 +76,35 @@ table.table-bordered{
 th, td {
     border-left: 2px solid;
     border-right: 2px solid; 
+}
+
+.message-content {
+    padding: 5px;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: lighten(white, 10%);
+    color: black;
+    word-wrap: break-word;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.file-upload{
+    height: 100%;
+    width: 100%;
+    /*opacity: .100%;*/
 }

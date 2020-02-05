@@ -70,6 +70,9 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    carrierwave-dropbox (2.0.0)
+      carrierwave (~> 1.2)
+      dropbox-sdk-v2 (~> 0.0.3)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -89,6 +92,12 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    dropbox-sdk-v2 (0.0.3)
+      http (~> 2.0)
+    dropzonejs-rails (0.8.4)
+      rails (> 3.1)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.12.1)
@@ -97,6 +106,15 @@ GEM
       mime-types (>= 1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    http (2.2.2)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (1.0.3)
+    http_parser.rb (0.6.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -210,6 +228,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -232,9 +253,11 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave (~> 1.0)
+  carrierwave-dropbox
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  dropzonejs-rails
   file_validators
   jbuilder (~> 2.5)
   jquery-rails

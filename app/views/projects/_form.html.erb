@@ -1,0 +1,9 @@
+<%=simple_form_for @project do |f|%>
+	<%= f.input :title, label:"Заголовок"%>
+	<%= f.input :description, label:"Описание" %>
+	<%= f.label :image, label:"Картинка" %>
+	<div style="border:solid 2px black;">
+		<%= f.file_field :image, multiple: true, class:"dropzone file-upload" %>
+	</div>
+	<%= f.button :submit, yield(:button_text) , class:"btn btn-primary"%>
+<% end %>

@@ -3,4 +3,23 @@
 	<h3><%= @project.description %></h3>
 	<%= image_tag(@project.image.url, alt: 'Image') if @project.image? %>
 	<h3>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></h3>
+
+	
+	<h4 align="center">Комментарии пользователей</h4>
+	
+	<div class="col">
+		<div class="message-content">
+			<% @comments.each do |comment|%>
+				<%if @project == comment.project %>
+					<p class="mb-1 user_comments"><span><%= "#{comment.user.username} : #{comment.body}" %></span></p>
+				<%end%>
+			<% end %>
+			<% if user_signed_in? %>
+				<%= simple_form_for @comment, :url => project_comments_path(@project) do |f| %>
+					<%= f.input :body, label:"Комментарий", input_html: {style: 'resize: none; height:100px;'} %>
+					<%= f.button :submit, "Отправить", class:"btn btn-primary" %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>
