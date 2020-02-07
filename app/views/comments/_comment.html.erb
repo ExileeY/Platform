@@ -1,0 +1,5 @@
+<% @comments.each do |comment|%>
+	<p class="mb-1 user_comments">
+		<%= "#{comment.created_at.strftime("%d/%m/%y %I:%M %p")} #{comment.user.username} : #{comment.body}" %>
+	</p>
+<% end %>

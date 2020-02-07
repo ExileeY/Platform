@@ -19,15 +19,13 @@
 	
 	<div class="col">
 		<div class="message-content">
-			<% @comments.each do |comment|%>
-				<p class="mb-1 user_comments">
-					<%= "#{comment.created_at.strftime("%d/%m/%y %I:%M %p")} #{comment.user.username} : #{comment.body}" %>
-				</p>
-			<% end %>
+			<div id="comment_update">
+				<%= render 'comments/comment' %>
+			</div>
 			<% if user_signed_in? %>
-				<%= simple_form_for @comment, :url => project_comments_path(@project) do |f| %>
-					<%= f.input :body, label:"Комментарий", input_html: {style: 'resize: none; height:100px;'} %>
-					<%= f.button :submit, "Отправить", class:"btn btn-primary", id:"my_form" %>
+				<%= form_with(model:[@user,@user.comments.build], :url => project_comments_path(@project), remote: true) do |f| %>
+					<%= f.text_area :body, label:"Комментарий", style: 'resize: none; height:100px;' %>
+					<%= f.submit "Отправить", class:"btn btn-primary" %>
 				<% end %>
 			<% end %>
 		</div>
