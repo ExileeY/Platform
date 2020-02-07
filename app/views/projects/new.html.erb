@@ -1,8 +1,9 @@
 <% provide(:button_text, "Создать проект") %>
+<% provide(:image_field, "new") %>
 
 <div class="container">
 	<div class="project-form">
-		<%= render 'shared/errors', object: @project %>
+		<%= render 'shared/errors', object:@project%>
 		<%= render 'form' %>
 	</div>
 </div>

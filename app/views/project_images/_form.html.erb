@@ -1,0 +1,6 @@
+<%= image_tag(@project_image.image.url, alt: 'Image') if @project_image.image?%>
+<%=simple_form_for @project_image do |f|%>
+	<%= f.label :image, label:"Картинки" %>
+	<%= f.file_field :image, class:"dropzone file-upload" %>
+	<%= f.button :submit, yield(:button_text), class:"btn btn-primary"%>
+<% end %>

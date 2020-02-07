@@ -4,21 +4,27 @@ class ProjectsController < ApplicationController
   before_action :require_permission, only: [:edit, :destroy]
 
   def index
-  	@projects = Project.order(created_at: :desc).all
+    @projects = Project.order(created_at: :desc).all
   end
 
   def new
-  	@project = @user.projects.new
+    @project = @user.projects.new
+    @project_image = @project.project_images.build
   end
 
   def create
-  	@project = @user.projects.new(project_params)
-  	if @project.save
-  		flash[:success] = "Your project has been saved"
-  		redirect_to project_path(@project)
-  	else
-  		render 'new'
-  	end
+    @project = @user.projects.new(project_params)
+    if @project.save
+      if params[:project_images] != nil
+        params[:project_images]['image'].each do |image|
+            @project.project_images.create!(:image => image, :project_id => @project.id)
+        end
+      end
+      flash[:success] = "Your project has been saved"
+      redirect_to project_path(@project)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -34,8 +40,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @comments = Comment.all
+    @comments = @project.comments.all
+    @project_images = @project.project_images.all
     @project = Project.find(params[:id])
+    @project_owner = @project.user
     if user_signed_in?
       @comment = @user.comments.new
     end
@@ -48,9 +56,9 @@ class ProjectsController < ApplicationController
   end
 
   private
-	  def project_params
-	  	params.require(:project).permit(:title,:description,:image)
-	  end
+    def project_params
+      params.require(:project).permit(:title,:description, :theme, :tag, project_images_attributes:[:id, :project_id, :image])
+    end
 
     def load_entities
       @project = Project.find_by(id: params[:id])

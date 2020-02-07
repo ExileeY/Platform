@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'profile/:user_id' => 'persons#profile', as: :profile
+  get 'profile/:id' => 'persons#profile', as: :profile
   devise_for :users
-  resources :projects, :shallow => true do
+  resources :projects do
   	resources :comments
   end
+  resources :project_images
+
 
   root 'projects#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

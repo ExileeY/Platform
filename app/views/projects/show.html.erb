@@ -1,7 +1,17 @@
 <div class="container">
 	<h1>Проект: <%= @project.title %></h1>
-	<h3><%= @project.description %></h3>
-	<%= image_tag(@project.image.url, alt: 'Image') if @project.image? %>
+	<h3>Тематика:<%= @project.theme %></h3>
+	<h3>Описание:<%= @project.description %></h3>
+	<h3>Тэги:<%= @project.tag %></h3>
+
+
+	<% @project_images.each do |pr_i| %>
+		<%= image_tag(pr_i.image.url, alt: 'Image') if pr_i.image?%>
+		<%if user_signed_in? && current_user == @project_owner%>
+			<%= link_to "Изменить картинку", edit_project_image_path(pr_i) %>
+		<% end %>
+	<% end %>
+
 	<h3>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></h3>
 
 	
@@ -10,14 +20,14 @@
 	<div class="col">
 		<div class="message-content">
 			<% @comments.each do |comment|%>
-				<%if @project == comment.project %>
-					<p class="mb-1 user_comments"><span><%= "#{comment.user.username} : #{comment.body}" %></span></p>
-				<%end%>
+				<p class="mb-1 user_comments">
+					<%= "#{comment.created_at.strftime("%d/%m/%y %I:%M %p")} #{comment.user.username} : #{comment.body}" %>
+				</p>
 			<% end %>
 			<% if user_signed_in? %>
 				<%= simple_form_for @comment, :url => project_comments_path(@project) do |f| %>
 					<%= f.input :body, label:"Комментарий", input_html: {style: 'resize: none; height:100px;'} %>
-					<%= f.button :submit, "Отправить", class:"btn btn-primary" %>
+					<%= f.button :submit, "Отправить", class:"btn btn-primary", id:"my_form" %>
 				<% end %>
 			<% end %>
 		</div>

@@ -1,9 +1,16 @@
+<%themes = ['Electronics','Education','Fashion','Music','Health & Beauty','Sports','Cars','Home & Garden']%>
 <%=simple_form_for @project do |f|%>
 	<%= f.input :title, label:"Заголовок"%>
 	<%= f.input :description, label:"Описание" %>
-	<%= f.label :image, label:"Картинка" %>
-	<div style="border:solid 2px black;">
-		<%= f.file_field :image, multiple: true, class:"dropzone file-upload" %>
-	</div>
+	<%= f.input :theme, label:"Категория", collection:themes %>
+	<%= f.input :tag, label:"Тэги" %>
+	<%if yield(:image_field) == "new"%>
+		<%= f.fields_for :project_images do |p| %>
+			<div class="field">
+				<%= p.label :image, label:"Картинки" %>
+				<%= p.file_field :image, multiple: true, name:"project_images[image][]", class:"dropzone file-upload" %>
+			</div>
+		<% end %>
+	<% end %>
 	<%= f.button :submit, yield(:button_text) , class:"btn btn-primary"%>
 <% end %>
