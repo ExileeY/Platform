@@ -16,14 +16,16 @@
 		<h4>Проекты</h4>
 		<div class="scroll-bar">
 			<table class="table table-striped">
+				<%= will_paginate @projects %>
 				<% @projects.each do |project| %>
 					<tbody>
 						<tr> 
-							<td>  <%= link_to project.title, project_path(project) %> </td>
+							<td> <div data-turbolinks="false"> <%= link_to project.title, project_path(project)%> </div> </td>
 						</tr>
 					</tbody>
 				<% end %>
 			</table>
+			<%= will_paginate @projects %>
 		</div>
 	<%end%>
 </div>

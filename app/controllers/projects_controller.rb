@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :require_permission, only: [:edit, :destroy]
 
   def index
-    @projects = Project.order(created_at: :desc).all
+    @projects = Project.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
   end
 
   def new
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @comments = @project.comments.all
+    @comments = @project.comments.all.order("id desc").limit(10).reverse
     @project_images = @project.project_images.all
     @project = Project.find(params[:id])
     @project_owner = @project.user

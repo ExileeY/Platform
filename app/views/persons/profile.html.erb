@@ -23,7 +23,9 @@
 		<% @user_projects.each do |user_project| %>
 			<tbody>
 				<tr> 
-					<td align="center">  <%= link_to user_project.title, project_path(user_project) %> </td>
+					<td align="center"> 
+						<div data-turbolinks="false"> <%= link_to user_project.title, project_path(user_project) %> </div>
+					</td>
 					<% if current_user?(@user) %>
 						<td align="center">  <%= link_to "Редактировать", edit_project_path(user_project) %> </td>
 						<td align="center">  <%= link_to "Удалить", user_project, method: :delete, data: {confirm: "Are you shure?"} %> </td>
