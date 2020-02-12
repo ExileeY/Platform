@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'profile/:id' => 'persons#profile', as: :profile
-  devise_for :users
+
+  devise_for :users, controllers: { omniauth_callbacks:"users/omniauth_callbacks", registrations: "users/registrations" }
+
   resources :projects do
   	resources :comments
   end
