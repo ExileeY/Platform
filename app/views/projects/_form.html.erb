@@ -4,6 +4,7 @@
 	<%= f.input :description, label:"Описание" %>
 	<%= f.input :theme, label:"Категория", collection:themes %>
 	<%= f.input :tag, label:"Тэги" %>
+	<%= f.input :video_url, label:"Видео", placeholder: "Вставьте ссылку на видео" %>
 
 	<%if yield(:image_field) == "new"%>
 		<%= f.fields_for :project_images do |p| %>

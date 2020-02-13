@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:title,:description, :theme, :tag, project_images_attributes:[:id, :project_id, :image])
+      params.require(:project).permit(:title,:description, :theme, :tag, :video_url, project_images_attributes:[:id, :project_id, :image])
     end
 
     def load_entities
