@@ -4,7 +4,6 @@
 	<h3>Описание:<%= @project.description %></h3>
 	<h3>Тэги:<%= @project.tag %></h3>
 
-
 	<% @project_images.each do |pr_i| %>
 		<%= image_tag(pr_i.image.url, alt: 'Image') if pr_i.image?%>
 		<%if user_signed_in? && current_user == @project_owner%>

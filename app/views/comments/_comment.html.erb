@@ -1,5 +1,18 @@
 <% @comments.each do |comment|%>
 	<p class="mb-1 user_comments">
 		<%= "#{comment.created_at.strftime("%d/%m/%y %I:%M %p")} #{comment.user.username} : #{comment.body}" %>
+		<%if user_signed_in?%>
+			<% pre_like = comment.likes.find {|like| like.user_id == current_user.id } %>
+			<%if pre_like%>
+				<%= button_to 'Unlike', comment_like_path(comment, pre_like), method: :delete %>
+			<%else%>
+				<%= button_to 'Like', comment_likes_path(comment), method: :post %>
+			<%end%>
+		<%end%>
+
+		<%if comment.likes.any?%>
+			<%= "#{comment.likes.count}" %> <%= comment.likes.count == 1 ? "Like" : "Likes"%>
+		<%end%>
 	</p>
+	<hr>
 <% end %>

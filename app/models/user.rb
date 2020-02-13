@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook vkontakte]
   has_many :projects, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   validates :username, presence: true, uniqueness: true
 
   def self.new_with_session(params, session)

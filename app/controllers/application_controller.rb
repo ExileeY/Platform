@@ -3,6 +3,24 @@ class ApplicationController < ActionController::Base
   	protect_from_forgery
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
+	def moon
+		cookies[:moon] = {value: "dark mode on"}
+		if user_signed_in?
+			redirect_to profile_path(current_user)
+		else
+			redirect_to root_path
+		end
+	end
+
+	def sun
+		cookies.delete(:moon)
+		if user_signed_in?
+			redirect_to profile_path(current_user)
+		else
+			redirect_to root_path
+		end
+	end
+
 	protected
 
 		def configure_permitted_parameters

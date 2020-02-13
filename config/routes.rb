@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  get 'profile/:id' => 'persons#profile', as: :profile
+  get 'profile/:id', to: 'persons#profile', as: 'profile'
+  get '/moon', to: 'application#moon', as: 'moon'
+  get '/sun', to: 'application#sun', as: 'sun'
 
   devise_for :users, controllers: { omniauth_callbacks:"users/omniauth_callbacks", registrations: "users/registrations" }
 
   resources :projects do
   	resources :comments
   end
+
+  resources :comments do
+  	resources :likes
+  end
+  
   resources :project_images
 
 
