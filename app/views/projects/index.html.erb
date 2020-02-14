@@ -13,14 +13,38 @@
 
 <div class="container text-center">
 	<%if @projects.any?%>
-		<h3>Проекты</h3>
+		<h3>Проекты
+				<div class="dropdown sort-dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    Сортировать
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				    <li><a href="/created_at_sort">по новым проектам</a></li>
+				    <li><a href="/rating_sort">по рейтингу</a></li>
+				  </ul>
+				</div>
+		</h3>
 		<div class="scroll-bar">
 			<table class="table table-striped">
+				<tr>
+					<th class="text-center">Название</th>
+					<th class="text-center">Рейтинг</th>
+				</tr>
 				<%= will_paginate @projects %>
 				<% @projects.each do |project| %>
 					<tbody>
 						<tr> 
-							<td> <div data-turbolinks="false"> <%= link_to project.title, project_path(project)%> </div> </td>
+							<td> <div data-turbolinks="false"> <%= link_to project.title, project_path(project) %> </div> </td>
+							<% if project.reviews.blank? %>
+								<% average_rating = 0 %>
+								<td> <div class="average-review-rating" data-score="<%= average_rating %>"></div> </td>
+							<%else%>
+								<% average_rating = project.reviews.average(:rating).round(2) %>
+								<td> 
+									<div class="average-review-rating" data-score="<%= average_rating %>"></div> 
+								</td>
+							<% end %>
 						</tr>
 					</tbody>
 				<% end %>
@@ -29,3 +53,15 @@
 		</div>
 	<%end%>
 </div>
+<%= @review %>
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+
+	});
+</script>

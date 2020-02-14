@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_123237) do
+ActiveRecord::Schema.define(version: 2020_02_13_174552) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2020_02_13_123237) do
     t.string "theme"
     t.text "tag"
     t.string "video_url"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.integer "user_id"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_reviews_on_project_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

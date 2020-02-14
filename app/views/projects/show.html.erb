@@ -16,7 +16,7 @@
 	<% end %>
 
 	<% @project_images.each do |pr_i| %>
-		<%= image_tag(pr_i.image.url, alt: 'Image') if pr_i.image?%>
+		<%= image_tag(pr_i.image.url, alt: 'Image', id:"galary_image") if pr_i.image?%>
 		<%if user_signed_in? && current_user == @project_owner%>
 			<%= link_to "Изменить картинку", edit_project_image_path(pr_i) %>
 		<% end %>
@@ -24,6 +24,12 @@
 
 	<h3>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></h3>
 
+	<% if user_signed_in? %>
+		<p><%= render 'reviews/form' if !current_user_has_review? %></p>
+		<% if @user_review != nil %>
+			<div class="review-rating" data-score="<%= @user_review.rating %>"><span>Ваша оценка: </span></div>
+		<% end %>
+	<% end %>
 	
 	<h4 align="center">Комментарии пользователей</h4>
 	
@@ -41,3 +47,13 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>

@@ -4,7 +4,11 @@ class ProjectsController < ApplicationController
   before_action :require_permission, only: [:edit, :destroy]
 
   def index
-    @projects = Project.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
+    if cookies[:rating_sort]
+      @projects = Project.includes(:reviews).order("reviews.rating desc").paginate(page: params[:page], per_page: 30)
+    else
+      @projects = Project.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
+    end
   end
 
   def new
@@ -46,6 +50,8 @@ class ProjectsController < ApplicationController
     @project_owner = @project.user
     if user_signed_in?
       @comment = @user.comments.new
+      @review = @user.reviews.new
+      @user_review = @project.reviews.find_by(user_id: @user.id)
     end
   end
 
@@ -53,6 +59,18 @@ class ProjectsController < ApplicationController
     @project.destroy
     flash[:success] = "Project has been deleted"
     redirect_to profile_path(@user)
+  end
+
+  def rating_sort
+    cookies[:rating_sort] = {
+      value:"Sort by rating"
+    }
+    redirect_to projects_path
+  end
+
+  def created_at_sort
+    cookies.delete :rating_sort
+    redirect_to projects_path
   end
 
   private
