@@ -1,3 +1,5 @@
+<%provide(:comment_form_url, project_comments_path(@project))%>
+
 <div class="container">
 	<h1>Проект: <%= @project.title %></h1>
 	<h3>Тематика:<%= @project.theme %></h3>
@@ -39,10 +41,7 @@
 				<%= render 'comments/comment' %>
 			</div>
 			<% if user_signed_in? %>
-				<%= simple_form_for(@comment, :url => project_comments_path(@project), remote: true) do |f| %>
-					<%= f.input :body, label:"Комментарий", input_html: {style: 'resize: none; height:100px;'} %>
-					<%= f.button :submit, "Отправить", class:"btn btn-primary" %>
-				<% end %>
+				<%= render 'comments/form' %>
 			<% end %>
 		</div>
 	</div>
