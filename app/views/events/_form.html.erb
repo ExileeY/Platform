@@ -1,0 +1,7 @@
+<%=simple_form_for(@event, url: yield(:event_form_url)) do |f|%>
+	<%= f.input :title, label:"Заголовок"%>
+	<%= f.input :body, label:"Описание" %>
+	<%= f.label "Картинка" %>
+	<%= f.file_field :image, class:"dropzone file-upload"%>
+	<%= f.button :submit, yield(:button_text) , class:"btn btn-primary"%>
+<% end %>

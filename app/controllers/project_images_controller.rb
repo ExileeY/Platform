@@ -17,6 +17,11 @@ class ProjectImagesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@project_image.destroy
+		redirect_to @project_image.project
+	end
+
 	private
 		def load_before
 			@project_image = ProjectImage.find(params[:id])

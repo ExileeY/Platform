@@ -1,0 +1,4 @@
+<h1>Новость: <%= @event.title %>.</h1>
+<h3>Описание: <%= @event.body %></h3>
+<section><%= image_tag(@event.image.url, alt:'Avatar', id:'galary_image') if @event.image? %></section>
+<%= link_to 'Вернуться к проекту', project_path(@project)%>

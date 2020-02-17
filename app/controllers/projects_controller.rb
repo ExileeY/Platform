@@ -6,6 +6,8 @@ class ProjectsController < ApplicationController
   def index
     if cookies[:rating_sort]
       @projects = Project.includes(:reviews).order("reviews.rating desc").paginate(page: params[:page], per_page: 30)
+    elsif cookies[:updated_at_sort]
+      @projects = Project.order(updated_at: :desc).paginate(page: params[:page], per_page: 30)
     else
       @projects = Project.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
     end
@@ -45,6 +47,7 @@ class ProjectsController < ApplicationController
 
   def show
     @comments = @project.comments.all.order("id desc").limit(10).reverse
+    @events = @project.events.all
     @project_images = @project.project_images.all
     @project = Project.find(params[:id])
     @project_owner = @project.user
@@ -62,14 +65,31 @@ class ProjectsController < ApplicationController
   end
 
   def rating_sort
+    if cookies[:updated_at_sort]
+      cookies.delete :updated_at_sort
+    end
     cookies[:rating_sort] = {
       value:"Sort by rating"
     }
     redirect_to projects_path
   end
 
+  def updated_at_sort
+    if cookies[:rating_sort]
+      cookies.delete :rating_sort
+    end
+    cookies[:updated_at_sort] = {
+      value:"Sort by updated projects"
+    }
+    redirect_to projects_path
+  end
+
   def created_at_sort
-    cookies.delete :rating_sort
+    if cookies[:rating_sort]
+      cookies.delete :rating_sort
+    elsif cookies[:updated_at_sort]
+      cookies.delete :updated_at_sort
+    end
     redirect_to projects_path
   end
 
@@ -85,7 +105,7 @@ class ProjectsController < ApplicationController
 
     def require_permission
       if current_user != Project.find(params[:id]).user
-        redirect_to project_path
+        redirect_to project_path(@project)
       end
     end
 end

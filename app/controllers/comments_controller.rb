@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  	before_action :authenticate_user!, only: [:create]
+  	before_action :authenticate_user!, only: [:create, :edit, :update]
 	before_action :load_entities
 	before_action :require_permission, only:[:edit, :update, :destroy]
 

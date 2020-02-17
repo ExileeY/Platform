@@ -77,6 +77,25 @@ div {
         height: 250px;
         overflow-y: scroll;
     }
+
+    .event-content {
+        display: block;
+        position: absolute;
+        padding: 10px;
+        margin-top: 0px;
+        margin-left: 65%;
+        border: 1px solid black;
+        border-radius: 5px;
+        box-sizing: inherit;
+        background: lighten(white, 10%);
+        color: black;
+        word-wrap: break-word;
+        width: 250px;
+        h3 {
+            margin-top: 0;
+        }
+    }
+
     .sort-dropdown {
         display:inline-block;
         left:85%;
@@ -104,6 +123,19 @@ img#galary_image {
     margin-right: auto;
     position: relative;
 }
+
+img#event_image{
+    display: block;
+    max-width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
 table.table-striped{
     td {
         background-color: #C0C0C0;

@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  	before_action :authenticate_user!
 	before_action :load_project
 	
 	def create

@@ -1,6 +1,10 @@
 <%provide(:comment_form_url, project_comments_path(@project))%>
 
 <div class="container">
+	<div class="event-content text-center">
+		<h3>Новости</h3>
+		<%= render 'events/news' %>
+	</div>
 	<h1>Проект: <%= @project.title %></h1>
 	<h3>Тематика:<%= @project.theme %></h3>
 	<h3>Описание:<%= @project.description %></h3>
@@ -20,7 +24,10 @@
 	<% @project_images.each do |pr_i| %>
 		<%= image_tag(pr_i.image.url, alt: 'Image', id:"galary_image") if pr_i.image?%>
 		<%if user_signed_in? && current_user == @project_owner%>
-			<%= link_to "Изменить картинку", edit_project_image_path(pr_i) %>
+			<p class="text-center">
+				<%= link_to "Изменить картинку", edit_project_image_path(pr_i), class:"btn btn-primary" %>
+				<%= link_to "Удалить", pr_i, data: {confirm: "Confirm you want to delete image"}, class:"btn btn-danger", method: :delete %>
+			</p>
 		<% end %>
 	<% end %>
 
