@@ -7,7 +7,7 @@ class ProjectImagesController < ApplicationController
 	end
 
 	def update
-		if current_user == @project_owner
+		if current_user == @project_owner || admin?
 			if @project_image.update_attributes(project_image_params)
 				flash[:success] = "Image was successfuly updated"
 				redirect_to @project_image.project
@@ -30,12 +30,18 @@ class ProjectImagesController < ApplicationController
 		end
 
 		def require_permission
-	      if current_user != @project_image.project.user
-	        redirect_to project_path(@project)
-	      end
+			if !admin?
+		      if current_user != @project_image.project.user
+		        redirect_to project_path(@project)
+		      end
+		  	end
 	    end
 
 		def project_image_params
 			params.require(:project_image).permit(:image)
+		end
+
+		def admin?
+			current_user.admin == true
 		end
 end

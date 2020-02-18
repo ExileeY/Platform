@@ -2,7 +2,7 @@
 	<p class="mb-1 user_comments">
 		<%= "#{comment.created_at.strftime("%d/%m/%y %I:%M %p")} #{comment.user.username} : #{comment.body}" %>
 		<%if user_signed_in?%>
-			<% if @user.id == comment.user_id%>
+			<% if @user.id == comment.user_id || user_admin?(@user)%>
 				<%= link_to "Редактировать", edit_comment_path(comment) %>
 				<%= link_to "Удалить", comment, data: {confirm: "Confirm you want to delete this message"}, method: :delete %>
 			<%end%>

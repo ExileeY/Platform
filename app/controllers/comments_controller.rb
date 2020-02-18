@@ -52,8 +52,10 @@ class CommentsController < ApplicationController
 	end
 
 	def require_permission
-      if current_user != Comment.find(params[:id]).user
-        redirect_to project_path(Comment.find(params[:id]).project)
-      end
+		if @user.admin != true
+	      if current_user != Comment.find(params[:id]).user
+	        redirect_to project_path(Comment.find(params[:id]).project)
+	      end
+	  	end
     end
 end

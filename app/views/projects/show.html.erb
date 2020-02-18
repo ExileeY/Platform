@@ -23,7 +23,7 @@
 
 	<% @project_images.each do |pr_i| %>
 		<%= image_tag(pr_i.image.url, alt: 'Image', id:"galary_image") if pr_i.image?%>
-		<%if user_signed_in? && current_user == @project_owner%>
+		<%if user_signed_in? && (current_user == @project_owner || user_admin?(@user))%>
 			<p class="text-center">
 				<%= link_to "Изменить картинку", edit_project_image_path(pr_i), class:"btn btn-primary" %>
 				<%= link_to "Удалить", pr_i, data: {confirm: "Confirm you want to delete image"}, class:"btn btn-danger", method: :delete %>

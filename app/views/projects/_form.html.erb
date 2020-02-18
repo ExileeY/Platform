@@ -1,5 +1,5 @@
 <%themes = ['Electronics','Education','Fashion','Music','Health & Beauty','Sports','Cars','Home & Garden']%>
-<%=simple_form_for @project do |f|%>
+<%=simple_form_for @project, url:yield(:project_form_url) do |f|%>
 	<%= f.input :title, label:"Заголовок"%>
 	<%= f.input :description, label:"Описание" %>
 	<%= f.input :theme, label:"Категория", collection:themes %>

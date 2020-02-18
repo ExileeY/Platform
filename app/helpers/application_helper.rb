@@ -6,4 +6,8 @@ module ApplicationHelper
 	def user_admin?(user)
 		user[:admin] == true
 	end
+
+	def user_owner?(user)
+		user[:owner] == true
+	end
 end

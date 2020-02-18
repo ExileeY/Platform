@@ -47,8 +47,10 @@ class EventsController < ApplicationController
 		end
 
 		def require_permission
-	      if current_user != @project.user
-	        redirect_to project_path(@project)
-	      end
+			if @user.admin != true
+		      if current_user != @project.user
+		        redirect_to project_path(@project)
+		      end
+		  	end
     	end
 end

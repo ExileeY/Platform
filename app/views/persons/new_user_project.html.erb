@@ -1,11 +1,11 @@
 <% provide(:button_text, "Создать проект") %>
 <% provide(:image_field, "new") %>
-<% provide(:project_form_url, projects_path) %>
+<% provide(:project_form_url, "/profile/#{@user.id}/projects") %>
 
 
 <div class="container">
 	<div class="project-form">
 		<%= render 'shared/errors', object:@project%>
-		<%= render 'form' %>
+		<%= render 'projects/form' %>
 	</div>
 </div>

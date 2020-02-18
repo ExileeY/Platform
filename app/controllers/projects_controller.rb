@@ -104,8 +104,10 @@ class ProjectsController < ApplicationController
     end
 
     def require_permission
-      if current_user != Project.find(params[:id]).user
-        redirect_to project_path(@project)
+      if @user.admin != true
+        if current_user != Project.find(params[:id]).user
+          redirect_to project_path(@project)
+        end
       end
     end
 end
