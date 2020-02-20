@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/profile/:id/projects/new', to: 'persons#new_user_project', as: 'user_project_new'
   post '/profile/:id/projects', to: 'persons#create_user_project'
 
+
   devise_for :users, controllers: { omniauth_callbacks:"users/omniauth_callbacks", registrations: "users/registrations" }
 
   resources :projects do
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   end
   
   resources :project_images
+  resources :bonuses
 
 
   root 'projects#index'

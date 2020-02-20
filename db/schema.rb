@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_201633) do
+ActiveRecord::Schema.define(version: 2020_02_20_184621) do
+
+  create_table "bonuses", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.float "price"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -59,6 +68,9 @@ ActiveRecord::Schema.define(version: 2020_02_17_201633) do
     t.string "theme"
     t.text "tag"
     t.string "video_url"
+    t.string "end_date"
+    t.float "money_donated"
+    t.float "money_need"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -85,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_201633) do
     t.string "uid"
     t.boolean "owner"
     t.boolean "banned"
+    t.float "balance", default: 0.0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

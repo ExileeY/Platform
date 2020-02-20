@@ -1,14 +1,24 @@
 <%provide(:comment_form_url, project_comments_path(@project))%>
 
 <div class="container">
-	<div class="event-content text-center">
-		<h3>Новости</h3>
-		<%= render 'events/news' %>
-	</div>
+		<div class="bonus-content text-center">
+			<h3>Бонусы</h3>
+			<%= render 'bonuses' %>
+		</div>
+		<div class="event-content text-center">
+			<%if @events.any?%>
+				<h3>Новости</h3>
+			<%end%>
+			<%= render 'events/news' %>
+		</div>
 	<h1>Проект: <%= @project.title %></h1>
 	<h3>Тематика:<%= @project.theme %></h3>
 	<h3>Описание:<%= @project.description %></h3>
 	<h3>Тэги:<%= @project.tag %></h3>
+	<h3>
+		<span>Пожертвованно: <%= @project.money_donated %></span>
+		<span class="project-date">Целевая сумма: <%= @project.money_need %></span>
+	</h3>
 
 	<% if !@project.video_url.nil? && @project.video_url.include?("https://www.youtube.com/watch?v=")%>
 		<h3>Видео:</h3>
@@ -31,7 +41,10 @@
 		<% end %>
 	<% end %>
 
-	<h3>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></h3>
+	<h3>
+		<span>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></span>
+		<span class="project-date">Дата окончания: <%= @project.end_date.remove("{","}","1=>","2=>","3=>").split(", ").join("-") %></span>
+	</h3>
 
 	<% if user_signed_in? %>
 		<p><%= render 'reviews/form' if !current_user_has_review? %></p>

@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   def new
     @project = @user.projects.new
     @project_image = @project.project_images.build
+    @project_bonuse = @project.bonuses.build
   end
 
   def create
@@ -51,6 +52,7 @@ class ProjectsController < ApplicationController
     @project_images = @project.project_images.all
     @project = Project.find(params[:id])
     @project_owner = @project.user
+    @bonuses = @project.bonuses
     if user_signed_in?
       @comment = @user.comments.new
       @review = @user.reviews.new
@@ -95,7 +97,10 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:title,:description, :theme, :tag, :video_url, project_images_attributes:[:id, :project_id, :image])
+      params.require(:project).permit(:title,:description, :theme, :tag, 
+                                      :video_url, :money_donated, :money_need, 
+                                      :end_date, project_images_attributes:[:id, :project_id, :image], 
+                                      bonuses_attributes:[:id, :project_id, :user_id, :name, :description, :price, :_destroy])
     end
 
     def load_entities

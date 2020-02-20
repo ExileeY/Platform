@@ -1,0 +1,14 @@
+<% @bonuses.each do |bonus| %>
+	<p>
+		<section>
+			<span>Название: <%=bonus.name%></span>
+		</section>
+		<section>
+			<span>Описание: <%=bonus.description%></span>
+		</section>
+		<section>
+			<span>Цена: <%=bonus.price%></span>
+		</section>
+		<hr>
+	</p>
+<% end %>

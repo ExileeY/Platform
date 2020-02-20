@@ -1,12 +1,23 @@
-<%themes = ['Electronics','Education','Fashion','Music','Health & Beauty','Sports','Cars','Home & Garden']%>
+<%themes = ['Not chosen','Electronics','Education','Fashion','Music','Health & Beauty','Sports','Cars','Home & Garden']%>
 <%=simple_form_for @project, url:yield(:project_form_url) do |f|%>
 	<%= f.input :title, label:"Заголовок"%>
 	<%= f.input :description, label:"Описание" %>
-	<%= f.input :theme, label:"Категория", collection:themes %>
+	<%= f.input :theme, label:"Категория", collection:themes, selected:themes[0] %>
 	<%= f.input :tag, label:"Тэги" %>
 	<%= f.input :video_url, label:"Видео", placeholder: "Вставьте ссылку на видео" %>
+	<%= f.input :money_need, label:"Целевая сумма денег", placeholder: "у.е." %>
+	<%= f.label "Бонусы" %>
+	<div class="fields">
+		<%= f.fields_for :bonuses do |b| %>
+			<%= render 'bonus', f: b %>
+		<%end%>
+	</div>
+	<%= link_to_add_row('Добавить бонус', f, :bonuses, class: 'btn btn-primary') %>
+
 
 	<%if yield(:image_field) == "new"%>
+		<%= f.input :end_date, label: "Дата окончания", as: :date, order:[:day, :month, :year] %>
+		<%= f.input :money_donated, as: :hidden, input_html: {value: 0} %>
 		<%= f.fields_for :project_images do |p| %>
 			<div class="field">
 				<%= p.label :image, label:"Картинки" %>

@@ -9,6 +9,10 @@
 			<th>Email:</th>
 			<td><%= @user.email %></td>
 		</tr>
+		<tr>
+			<th>Баланс:</th>
+			<td><%= @user.balance %> у.е.</td>
+		</tr>
 		<%if user_admin?(current_user) && !current_user?(@user)%>
 			<%if @user.admin != true%>
 				<td><%= link_to "Дать права", give_permission_path(@user), class:"btn btn-primary" %></td>

@@ -1,8 +1,9 @@
 class PersonsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_entities
+  before_action :user_is_owner, only: [:new_user_project]
   before_action :require_owner_permission, only: [:take_away_permission]
-  before_action :require_admin_permission, only: [:give_permission, :ban, :unban, :delete_user]
+  before_action :require_admin_permission, only: [:give_permission, :ban, :unban, :delete_user, :new_user_project]
   before_action :current_user_unbanned, :current_user_banned, only: [:ban_page]
 
   def profile
@@ -40,10 +41,14 @@ class PersonsController < ApplicationController
   def new_user_project
     @project = @user.projects.new
     @project_image = @project.project_images.build
+    @project_bonuse = @project.bonuses.build
   end
 
   def create_user_project
-    @project = @user.projects.new(params.require(:project).permit(:title,:description, :theme, :tag, :video_url, project_images_attributes:[:id, :project_id, :image]))
+    @project = @user.projects.new(params.require(:project).permit(:title,:description, :theme, :tag,
+                                                                  :video_url, :money_donated, :money_need, 
+                                                                  :end_date, project_images_attributes:[:id, :project_id, :image],
+                                                                  bonuses_attributes:[:id, :project_id, :user_id, :name, :description, :price, :_destroy]))
     if @project.save
       if params[:project_images] != nil
         params[:project_images]['image'].each do |image|
@@ -53,7 +58,7 @@ class PersonsController < ApplicationController
       flash[:success] = "Your project has been saved"
       redirect_to project_path(@project)
     else
-      render 'new'
+      render 'new_user_project'
     end
   end
 
@@ -85,4 +90,10 @@ class PersonsController < ApplicationController
   			redirect_to root_path
   		end
   	end
+
+    def user_is_owner
+      if @user.owner == true
+        redirect_to root_path
+      end
+    end
 end
