@@ -21,7 +21,7 @@
 		<span>
 			Пожертвованно: <%= @project.money_donated %> у.е. 
 			<%if user_signed_in?%>
-				<%= link_to 'Поддержать проект', '#', class: 'btn btn-primary' %>
+				<%= link_to 'Поддержать проект', new_project_transaction_path(@project), class: 'btn btn-primary' %>
 			<%end%>
 		</span>
 		<span class="project-data">Целевая сумма: <%= @project.money_need %> у.е.</span>
@@ -29,7 +29,7 @@
 	<% status = (@project.money_donated/@project.money_need)*100 %>
 	<div class="progress" style="width: 95%;">
 	  <div class="progress-bar" role="progressbar" aria-valuenow="0"
-	  aria-valuemin="0" aria-valuemax="100" style="width: <%=status%>%">
+	  aria-valuemin="0" aria-valuemax="100" style="width: <%=status%>%; color:black;">
 	    <%=status.round(2)%>%
 	  </div>
 	</div>

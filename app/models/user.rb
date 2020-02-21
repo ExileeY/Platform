@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :user_bonuses, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
 

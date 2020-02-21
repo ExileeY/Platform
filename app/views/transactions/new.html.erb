@@ -1,0 +1,5 @@
+<h3>Перевод денежных средств</h3>
+<%= simple_form_for(@donate, url:"/projects/#{@project.id}/transactions") do |f| %>
+	<%= f.input :money, label:"Сумма", placeholder:"Введите желаемую сумму" %>
+	<%= f.button :submit, "Перевести" , data: {confirm: "Подтвердите перевод средств"}, class:"btn btn-primary" %>
+<% end %>
