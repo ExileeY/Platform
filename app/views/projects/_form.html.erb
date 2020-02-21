@@ -6,6 +6,7 @@
 	<%= f.input :tag, label:"Тэги" %>
 	<%= f.input :video_url, label:"Видео", placeholder: "Вставьте ссылку на видео" %>
 	<%= f.input :money_need, label:"Целевая сумма денег", placeholder: "у.е." %>
+	
 	<%= f.label "Бонусы" %>
 	<div class="fields">
 		<%= f.fields_for :bonuses do |b| %>

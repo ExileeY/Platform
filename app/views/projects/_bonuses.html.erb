@@ -7,8 +7,19 @@
 			<span>Описание: <%=bonus.description%></span>
 		</section>
 		<section>
-			<span>Цена: <%=bonus.price%></span>
+			<span>Цена: <%=bonus.price%> у.е.</span>
 		</section>
+		<% if user_signed_in?%>
+			<section>
+				<% if UserBonus.where(user_id: @user.id, bonus_id: bonus.id).exists? %>
+					<p>Done!</p>
+				<% else %>
+					<span>
+						<%= link_to "Поддержать", user_bonus_create_path(bonus), data: {confirm: "С баланса спишется #{bonus.price} у.е."}, class: 'btn btn-primary' %>
+					</span>
+				<% end %>
+			</section>
+		<% end %>
 		<hr>
 	</p>
 <% end %>

@@ -16,7 +16,7 @@ body {
  	font-size: 21px;
  }
 
- span.project-date{
+ span.project-data{
         float: right;
         margin-right: 60px;
  }
@@ -119,6 +119,17 @@ div{
 
     .comment-form {
         margin-top: 20%;
+    }
+
+    .user-bonuses {
+        position: absolute;
+        top: 8%;
+        right: 20%;
+        text-align: center;
+        border: solid grey 4px;
+        border-radius: 4px;
+        width: 280px;
+        height: 310px;
     }
 
 }

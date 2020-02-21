@@ -22,7 +22,7 @@ body {
     color: #A9A9A9;
  }
 
- span.project-date{
+ span.project-data{
         float: right;
         margin-right: 60px;
  }
@@ -132,6 +132,17 @@ div {
 
     .alert{
         color: #A9A9A9;
+    }
+
+    .user-bonuses {
+        position: absolute;
+        top: 8%;
+        right: 20%;
+        text-align: center;
+        border: solid grey 4px;
+        border-radius: 4px;
+        width: 280px;
+        height: 310px;
     }
 }
 

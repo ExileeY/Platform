@@ -2,7 +2,9 @@
 
 <div class="container">
 		<div class="bonus-content text-center">
-			<h3>Бонусы</h3>
+			<%if @bonuses.any?%>
+				<h3>Бонусы</h3>
+			<%end%>
 			<%= render 'bonuses' %>
 		</div>
 		<div class="event-content text-center">
@@ -16,9 +18,21 @@
 	<h3>Описание:<%= @project.description %></h3>
 	<h3>Тэги:<%= @project.tag %></h3>
 	<h3>
-		<span>Пожертвованно: <%= @project.money_donated %></span>
-		<span class="project-date">Целевая сумма: <%= @project.money_need %></span>
+		<span>
+			Пожертвованно: <%= @project.money_donated %> у.е. 
+			<%if user_signed_in?%>
+				<%= link_to 'Поддержать проект', '#', class: 'btn btn-primary' %>
+			<%end%>
+		</span>
+		<span class="project-data">Целевая сумма: <%= @project.money_need %> у.е.</span>
 	</h3>
+	<% status = (@project.money_donated/@project.money_need)*100 %>
+	<div class="progress" style="width: 95%;">
+	  <div class="progress-bar" role="progressbar" aria-valuenow="0"
+	  aria-valuemin="0" aria-valuemax="100" style="width: <%=status%>%">
+	    <%=status.round(2)%>%
+	  </div>
+	</div>
 
 	<% if !@project.video_url.nil? && @project.video_url.include?("https://www.youtube.com/watch?v=")%>
 		<h3>Видео:</h3>
@@ -43,7 +57,7 @@
 
 	<h3>
 		<span>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></span>
-		<span class="project-date">Дата окончания: <%= @project.end_date.remove("{","}","1=>","2=>","3=>").split(", ").join("-") %></span>
+		<span class="project-data">Дата окончания: <%= @project.end_date.remove("{","}","1=>","2=>","3=>").split(", ").join("-") %></span>
 	</h3>
 
 	<% if user_signed_in? %>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete '/profile/:id', to: 'persons#delete_user'
   get '/profile/:id/projects/new', to: 'persons#new_user_project', as: 'user_project_new'
   post '/profile/:id/projects', to: 'persons#create_user_project'
+  get '/bonus/:bonus_id/user_bonus/create', to: 'user_bonuses#create', as: 'user_bonus_create'
 
 
   devise_for :users, controllers: { omniauth_callbacks:"users/omniauth_callbacks", registrations: "users/registrations" }

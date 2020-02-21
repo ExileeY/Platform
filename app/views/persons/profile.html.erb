@@ -1,4 +1,19 @@
 <h1>Профиль</h1>
+<%if @user.user_bonuses.any?%>
+	<div class="user-bonuses scroll-bar">
+		<h3>Бонусы пользователя</h3>
+		<% @user.user_bonuses.each do |user_bonus| %>
+			<section>
+				Название: <%= user_bonus.bonus.name %>
+			</section>
+			<section>
+				Описание: <%= user_bonus.bonus.description %>
+			</section>
+			<hr>
+		<% end %>
+	</div>
+<%end%>
+
 <table align="center" class="table table-bordered">
 		<tr>
 			<th>Имя пользователя:</th>
@@ -13,6 +28,7 @@
 			<th>Баланс:</th>
 			<td><%= @user.balance %> у.е.</td>
 		</tr>
+
 		<%if user_admin?(current_user) && !current_user?(@user)%>
 			<%if @user.admin != true%>
 				<td><%= link_to "Дать права", give_permission_path(@user), class:"btn btn-primary" %></td>
