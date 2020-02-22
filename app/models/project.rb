@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
 	after_initialize :set_defaults
+	acts_as_taggable_on :tags
 	belongs_to :user
   	has_many :comments, dependent: :destroy
   	has_many :project_images, dependent: :destroy

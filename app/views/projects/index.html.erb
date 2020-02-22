@@ -12,6 +12,12 @@
 </div>
 
 <div class="container text-center">
+	<h3>Облако тегов</h3>
+	<% @tags.each do |tag| %>
+		<span class="tags">
+			<%= link_to tag, tagged_path(tag: "#{tag}"), class: 'tag' %>
+		</span>
+	<% end %>
 	<%if @projects.any?%>
 		<h3>Проекты
 				<div class="dropdown sort-dropdown">

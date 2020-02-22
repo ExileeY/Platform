@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post '/projects/:project_id/transactions', to: 'transactions#create'
   get '/add_balance/new', to: 'add_balances#new', as: 'new_add_balance'
   post '/add_balance/create', to: 'add_balances#create'
+  get '/tagged', to: "projects#tagged", as: 'tagged'
 
 
 

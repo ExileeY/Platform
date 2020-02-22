@@ -1,0 +1,21 @@
+<h1>Проекты с тегом: <%= params[:tag] %></h1>
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<th class="text-center">Название</th>
+			<th class="text-center">Описание</th>
+		</thead>
+		<%@projects.each do |project|%>	
+			<tbody>	
+				<tr>
+					<td align="center">
+						<%= link_to project.title, project_path(project) %>
+					</td>
+					<td align="center">
+						<%=project.description%>
+					</td>
+				</tr>
+			</tbody>
+		<%end%>
+	</table>
+</div>

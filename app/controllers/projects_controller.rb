@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
     end
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
   def new
@@ -95,9 +96,17 @@ class ProjectsController < ApplicationController
     redirect_to projects_path
   end
 
+  def tagged
+    if params[:tag].present?
+      @projects = Project.tagged_with(params[:tag])
+    else
+      @projects = Project.all
+    end
+  end
+
   private
     def project_params
-      params.require(:project).permit(:title,:description, :theme, :tag, 
+      params.require(:project).permit(:title,:description, :theme, :tag_list, 
                                       :video_url, :money_need, 
                                       :end_date, project_images_attributes:[:id, :project_id, :image], 
                                       bonuses_attributes:[:id, :project_id, :user_id, :name, :description, :price, :_destroy])

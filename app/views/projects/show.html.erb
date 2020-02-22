@@ -16,7 +16,14 @@
 	<h1>Проект: <%= @project.title %></h1>
 	<h3>Тематика:<%= @project.theme %></h3>
 	<h3>Описание:<%= @project.description %></h3>
-	<h3>Тэги:<%= @project.tag %></h3>
+	<h3>
+		<div class="tags">
+			Тэги:
+			<% @project.tag_list.each do |tag| %>
+				<%= link_to tag, tagged_path(tag: tag), class: 'tag' %>
+			<% end %>
+		</div>
+	</h3>
 	<h3>
 		<span>
 			Пожертвованно: <%= @project.money_donated %> у.е. 
@@ -30,7 +37,7 @@
 	<div class="progress" style="width: 95%;">
 	  <div class="progress-bar" role="progressbar" aria-valuenow="0"
 	  aria-valuemin="0" aria-valuemax="100" style="width: <%=status%>%; color:black;">
-	    <%=status.round(2)%>%
+	    <%=status.round(2).to_s + "%" if status <= 100%>
 	  </div>
 	</div>
 

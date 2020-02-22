@@ -3,7 +3,7 @@
 	<%= f.input :title, label:"Заголовок"%>
 	<%= f.input :description, label:"Описание" %>
 	<%= f.input :theme, label:"Категория", collection:themes, selected:themes[0] %>
-	<%= f.input :tag, label:"Тэги" %>
+	<%= f.input :tag_list, label:"Тэги", value: @project.send(:tag_list).to_s, placeholder: 'наука, разработка' %>
 	<%= f.input :video_url, label:"Видео", placeholder: "Вставьте ссылку на видео" %>
 	<%= f.input :money_need, label:"Целевая сумма денег", placeholder: "у.е." %>
 	
