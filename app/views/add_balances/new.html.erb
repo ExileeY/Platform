@@ -1,0 +1,5 @@
+<h3>Пополнение баланса</h3>
+<%= simple_form_for(@add_balance, url:"/add_balance/create") do |f| %>
+	<%= f.input :money, label:"Сумма", placeholder:"Введите желаемую сумму" %>
+	<%= f.button :submit, "Пополнить" , data: {confirm: "Подтвердите пополнение средств"}, class:"btn btn-primary" %>
+<% end %>

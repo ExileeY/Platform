@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+	after_initialize :set_defaults
 	belongs_to :user
   	has_many :comments, dependent: :destroy
   	has_many :project_images, dependent: :destroy
@@ -12,4 +13,8 @@ class Project < ApplicationRecord
 	validates :description, presence: true
 	validates :end_date, presence: true
 	validates :money_need, presence: true
+
+	def set_defaults
+	   self.money_donated = 0 if self.new_record?
+	end
 end

@@ -46,7 +46,7 @@ class PersonsController < ApplicationController
 
   def create_user_project
     @project = @user.projects.new(params.require(:project).permit(:title,:description, :theme, :tag,
-                                                                  :video_url, :money_donated, :money_need, 
+                                                                  :video_url, :money_need, 
                                                                   :end_date, project_images_attributes:[:id, :project_id, :image],
                                                                   bonuses_attributes:[:id, :project_id, :user_id, :name, :description, :price, :_destroy]))
     if @project.save

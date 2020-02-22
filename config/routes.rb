@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get '/bonus/:bonus_id/user_bonus/create', to: 'user_bonuses#create', as: 'user_bonus_create'
   get 'projects/:project_id/transaction/new', to: 'transactions#new', as: 'new_project_transaction'
   post '/projects/:project_id/transactions', to: 'transactions#create'
+  get '/add_balance/new', to: 'add_balances#new', as: 'new_add_balance'
+  post '/add_balance/create', to: 'add_balances#create'
+
 
 
   devise_for :users, controllers: { omniauth_callbacks:"users/omniauth_callbacks", registrations: "users/registrations" }

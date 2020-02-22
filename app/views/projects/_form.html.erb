@@ -18,7 +18,6 @@
 
 	<%if yield(:image_field) == "new"%>
 		<%= f.input :end_date, label: "Дата окончания", as: :date, order:[:day, :month, :year] %>
-		<%= f.input :money_donated, as: :hidden, input_html: {value: 0} %>
 		<%= f.fields_for :project_images do |p| %>
 			<div class="field">
 				<%= p.label :image, label:"Картинки" %>

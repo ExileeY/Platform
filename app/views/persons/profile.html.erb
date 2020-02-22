@@ -26,7 +26,12 @@
 		</tr>
 		<tr>
 			<th>Баланс:</th>
-			<td><%= @user.balance %> у.е. <%= link_to "Пополнить", '#', class: 'btn btn-primary' %></td>
+			<td>
+				<%= @user.balance %> у.е. 
+				<%if current_user?(@user)%>
+					<%= link_to "Пополнить", new_add_balance_path, class: 'btn btn-primary' %>
+				<%end%>
+			</td>
 		</tr>
 
 		<%if user_admin?(current_user) && !current_user?(@user)%>
