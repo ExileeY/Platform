@@ -64,7 +64,7 @@
 
 	<h3>
 		<span>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></span>
-		<span class="project-data">Дата окончания: <%= @project.end_date.remove("{","}","1=>","2=>","3=>").split(", ").join("-") %></span>
+		<span class="project-data">Дата окончания: <%= @project.end_date  %></span>
 	</h3>
 
 	<% if user_signed_in? %>

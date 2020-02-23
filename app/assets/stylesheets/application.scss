@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "dropzone/dropzone";
+@import "datetime_picker_input";
 
 body {
     background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/light-grey-terrazzo.png');
@@ -129,7 +130,13 @@ div{
         border: solid grey 4px;
         border-radius: 4px;
         width: 280px;
-        height: 310px;
+        height: 250px;
+    }
+    .list {
+      th, td {
+          border-left: 2px solid;
+          border-right: 2px solid;
+      }
     }
 
 }
@@ -171,11 +178,6 @@ table.table-bordered{
     width: 300px;
     border-collapse: separate;
 
-}
-
-th, td {
-    border-left: 2px solid;
-    border-right: 2px solid;
 }
 
 hr {

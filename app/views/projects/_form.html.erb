@@ -15,9 +15,16 @@
 	</div>
 	<%= link_to_add_row('Добавить бонус', f, :bonuses, class: 'btn btn-primary') %>
 
-
 	<%if yield(:image_field) == "new"%>
-		<%= f.input :end_date, label: "Дата окончания", as: :date, order:[:day, :month, :year] %>
+		<%= f.input :end_date, label: "Дата окончания", as: :date_time_picker, input_html:
+		  { data:
+		    {
+		      date_format: "YYYY.MM.DD hh:mm A",
+		      date_day_view_header_format: 'MMM YYYY',
+		      date_side_by_side: true,
+		      date_min_date: Time.current.strftime('%Y-%m-%d')
+		    }
+		  } %>
 		<%= f.fields_for :project_images do |p| %>
 			<div class="field">
 				<%= p.label :image, label:"Картинки" %>

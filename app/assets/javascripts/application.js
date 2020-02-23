@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require dropzone
+//= require datetime_picker_input 
 //= require_tree
 $(document).on('turbolinks:load', function() {
 
