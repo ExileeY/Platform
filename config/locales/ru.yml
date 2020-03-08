@@ -1,0 +1,200 @@
+ru:
+  nav_bar:
+    home: 'Краудфандинг'
+    search: 'Поиск'
+    submit: 'Отправить'
+    light: 'Светлая тема'
+    dark: 'Тёмная тема'
+    reg: 'Зарегистрировться'
+    login: 'Войти'
+    user:
+      profile: 'Профиль'
+      exit: 'Выход'
+
+  main:
+    title: 'Краудфандинг в Беларуси'
+    description: 'платформа для финансирования бизнес-проектов, новых технологий, творчества и социальных инициатив.'
+    about: 'Здесь вы получите инструменты для проведения сбора, консультации и поддержку.'
+    create: 'Создать проект'
+    tags: 'Облако тегов'
+    projects: 'Проекты'
+    sort: 'Сортировать'
+    by_create_at: 'по новым проектам'
+    by_update_at: 'по недавно изменённым проектам'
+    by_rating: 'по рейтингу'
+    name: 'Название'
+    rating: 'Рейтинг'
+
+  project:
+    title: 'Проект'
+    category: 'Тематика'
+    description: 'Описание'
+    tags: 'Тэги'
+    donated: 'Пожертвованно'
+    donate_button: "Поддержать проект"
+    money_need: 'Целевая сумма'
+    currency: "у.е."
+    video: 'Видео'
+    user: 'Создал пользователь'
+    end_date: 'Дата окончания'
+    image: 'Картинки'
+    bonuses:
+      title: 'Бонусы'
+      name: 'Название'
+      description: 'Описание'
+      price: 'Цена'
+      status: 'Готово'
+      get_bonus: 'Поддержать'
+      confirmation: 'С вашего кошелька спишется'
+      destroy: 'Удалить'
+      add_bonus: 'Добавить бонус'
+    news:
+      title: 'Новости'
+      name: 'Заголовок'
+      edit: 'Редактировать'
+      destroy: 'Удалить'
+      confirmation: 'Вы действительно хотите удалить эту новость?'
+      create: 'Добавить новость'
+    images:
+      image: 'Картинка'
+      edit: 'Изменить картинку'
+      destroy: 'Удалить'
+      confirmation: 'Вы действительно хотите удалить эту картинку?'
+    reviews:
+      review: 'Ваша оценка'
+      submit: 'Отправить'
+      title: 'Рейтинг'
+    comments:
+      title: 'Комментарии пользователей'
+      edit: 'Редактировать'
+      destroy: 'Удалить'
+      confirmation: 'Вы действительно хотите удалить этот комментарий?'
+      unlike: 'Убрать лайк'
+      like: 'Поставить лайк'
+      one_like: 'Лайк'
+      many_likes: 'Лайки'
+      submit: 'Отправить'
+
+  comment:
+    edit_title: 'Изменение комментария'
+
+  transactions:
+    title: 'Перевод денежных средств'
+    submit: 'Перевести'
+    confirmation: 'Подтвердите перевод средств'
+
+  person:
+    banned: 'Забанен'
+
+  event:
+    name: 'Новость'
+    description: 'Описание'
+    back_to_project: 'Вернуться к проекту'
+
+  profile:
+    title: 'Профиль'
+    user_bonuses: 'Бонусы пользователя'
+    user_bonus_name: 'Название'
+    user_bonus_description: 'Описание'
+    name: 'Имя пользователя'
+    email: 'Почта'
+    balance: 'Баланс'
+    add_balance: 'Пополнить'
+    currency: 'у.е.'
+    give_permission: 'Дать права'
+    take_away_permission: 'Забрать права'
+    ban: 'Заблокировать'
+    unban: 'Разблокировать'
+    destroy: 'Удалить пользователя'
+    confirmation: 'Вы действительно хотите удалить пользователя'
+    title_edit: 'Редактировать'
+    edit: 'Изменить данные'
+    projects: 'Проекты пользователя'
+
+    project:
+      edit: 'Редактировать'
+      destroy: 'Удалить'
+      confirmation: 'Вы действительно хотите удалить этот проект?'
+      create: 'Создать проект'
+      create_with_user: 'Создать от имени'
+
+  tagged:
+    title: 'Проекты с тегом'
+    name: 'Название'
+    description: 'Описание'
+
+  will_paginate:
+    previous_label: '&larr; Назад'
+    next_label: 'Вперёд &rarr;'
+
+  button_text:
+    new_project: 'Создать проект'
+    edit_project: 'Изменить проект'
+    edit_project_image: 'Изменить картинку'
+    new_event: 'Поделиться'
+    edit_event: 'Изменить'
+
+  add_balance:
+    title: 'Пополнение баланса'
+    submit: 'Пополнить'
+    confirmation: 'Подтвердите пополнение средств'
+  user:
+    sign_up: 'Регистрация'
+    sign_up_submit: 'Зарегистрировться'
+    sign_in: 'Вход'
+    sign_in_submit: 'Войти'
+    edit: 'Изменить Пользователя'
+    edit_submit: 'Изменить'
+    destroy: 'Удалить этот аккаунт'
+    confirmation: 'Вы действительно хотите удалить этот аккаунт?'
+    happy: 'Недавольны'
+    password_hint: 'символов минимум'
+    reset_password_submit: 'Выслать письмо на почту'
+    back: 'Назад'
+    user_link:
+      sign_in: 'Войти'
+      sign_up: 'Зарегистрироваться'
+      forgot_password: 'Забыли пароль?'
+      confirm_instructions: 'Не получили инструкции по подтверждению?'
+      unlock__instructions: 'Не получили инструкции по разблокировке?'
+      sign_in_with: 'Войти через'
+
+  errors:
+    messages:
+      carrierwave_processing_error: "Невозможно сжать картинку."
+      carrierwave_integrity_error: "Не картинка."
+      carrierwave_download_error: "Невозможно скачать картинку."
+      extension_whitelist_error: "Вы не можете загружать %{extension} файлы, разрешённые типы: %{allowed_types}"
+      extension_blacklist_error: "Вы не можете загружать %{extension} файлы, запрещенные файлы: %{prohibited_types}"
+    title: 'Были обнаружены ошибки'
+
+  flash:
+    comments:
+      update: 'Комментарий обновлён'
+    likes:
+      already_liked: 'Вы не можете поставить больше одного лайка'
+      cannot_unlike: 'Невозможно удалить лайк'
+    persons:
+      create_user_project: 'Ваш проект сохранён'
+    project_images:
+      update: 'Картинка успешно изменена'
+    projects:
+      create: 'Проект сохранён'
+      update: 'Проект изменён'
+      destroy: 'Проект удалён'
+    reviews:
+      create: 'Невозможно оценить дважды'
+    user_bonuses:
+      create: 'Недостаточно средств в кошельке'
+      user_has_bonuse: 'У вас уже есть этот бонус'
+      user_exist: 'Войдите в аккаунт'
+  devise:
+    sessions:
+      user:
+        signed_out: 'Пользователь успешно вышел'
+    omniauth_callbacks:
+      user:
+        success: 'Пользователь вошел'
+    registrations:
+      user:
+        updated: 'Информация о пользователе успешно обновлена'

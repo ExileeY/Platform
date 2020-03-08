@@ -1,4 +1,4 @@
-/*$(document).ready(function(){
+$(document).ready(function(){
 	if ($('#comment_update').length){
 		var interval = setInterval(refreshPartial, 3000);
 		$(document).on("turbolinks:load", function(){
@@ -16,4 +16,4 @@ function refreshPartial() {
 eval(resp)
     }
  })
-}*/
+}
