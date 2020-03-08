@@ -1,8 +1,8 @@
 <%= simple_form_for(@review, :url => project_reviews_path(@project)) do |f|%>
 	<div id="rating-form">
-		<label>Рейтинг</label>
+		<label><%= t("project.reviews.title") %></label>
 	</div>
-	<%= f.button :submit, "Отправить", class:"btn btn-primary" %>
+	<%= f.button :submit, t("project.reviews.submit"), class:"btn btn-primary" %>
 <% end %>
 <script>
 	$('#rating-form').raty({

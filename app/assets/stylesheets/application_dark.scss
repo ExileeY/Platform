@@ -143,7 +143,15 @@ div {
         border: solid grey 4px;
         border-radius: 4px;
         width: 280px;
-        height: 310px;
+        height: 250px;
+    }
+
+    .list {
+      th, td {
+          border-left: 2px solid;
+          border-right: 2px solid;
+          color: #A9A9A9;
+      }
     }
 }
 
@@ -175,6 +183,7 @@ table.table-striped{
     td {
         background-color: #C0C0C0;
         border-radius: 20px;
+        color: #696969;
     }
 }
 table.table-bordered{
@@ -182,14 +191,8 @@ table.table-bordered{
     border-radius: 4px;
     width: 300px;
     border-collapse: separate;
+    color: #A9A9A9;
 
-}
-th, td {
-    .list{
-      border-left: 2px solid;
-      border-right: 2px solid;
-      color: #A9A9A9;
-    }
 }
 
 

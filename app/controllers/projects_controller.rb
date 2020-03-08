@@ -11,6 +11,11 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
     end
+
+    if params[:search]
+      @search_term = params[:search]
+      @projects = @projects.search_by(@search_term)
+    end
     @tags = ActsAsTaggableOn::Tag.all
   end
 
@@ -28,7 +33,7 @@ class ProjectsController < ApplicationController
             @project.project_images.create!(:image => image, :project_id => @project.id)
         end
       end
-      flash[:success] = "Your project has been saved"
+      flash[:success] = t("flash.projects.create")
       redirect_to project_path(@project)
     else
       render 'new'
@@ -40,7 +45,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(project_params)
-      flash[:success] = "Changes saved"
+      flash[:success] = t("flash.projects.update")
       redirect_to project_path(@project)
     else
       render 'edit'
@@ -63,7 +68,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    flash[:success] = "Project has been deleted"
+    flash[:success] = t("flash.projects.destroy")
     redirect_to profile_path(@user)
   end
 
@@ -100,7 +105,7 @@ class ProjectsController < ApplicationController
     if params[:tag].present?
       @projects = Project.tagged_with(params[:tag])
     else
-      @projects = Project.all
+      @projects = Project.paginate(page: params[:page], per_page: 30)
     end
   end
 

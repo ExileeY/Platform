@@ -30,6 +30,165 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  nav_bar:
+    home: 'Crowdfunding'
+    search: 'Search'
+    submit: 'Send'
+    light: 'Light mode'
+    dark: 'Dark mode'
+    reg: 'Sign Up'
+    login: 'Sign In'
+    user:
+      profile: 'Profile'
+      exit: 'Log out'
+
+  main:
+    title: 'Crowdfunding in Belarus'
+    description: 'platform for financing business projects, new technologies, creativity and social initiatives.'
+    about: 'Here you will receive tools for the collection, consultation and support.'
+    create: 'Create project'
+    tags: 'Tag Cloud'
+    projects: 'Projects'
+    sort: 'Sort'
+    by_create_at: 'by new projects'
+    by_update_at: 'by updated projects'
+    by_rating: 'by rating'
+    name: 'Name'
+    rating: 'Rating'
+
+  project:
+    title: 'Prject'
+    category: 'Category'
+    description: 'Description'
+    tags: 'Tags'
+    donated: 'Donated'
+    donate_button: "Donate"
+    money_need: 'Target amount'
+    currency: "c.u."
+    video: 'Video'
+    user: 'Created by user'
+    end_date: 'End date'
+    image: 'Images'
+    bonuses:
+      title: 'Bonuses'
+      name: 'Name'
+      description: 'Description'
+      price: 'Price'
+      status: 'Done'
+      get_bonus: 'Get bonus'
+      confirmation: 'It will be debited from your wallet'
+      destroy: 'Delete'
+      add_bonus: 'Add bonus'
+    news:
+      title: 'Events'
+      name: 'Title'
+      edit: 'Edit'
+      destroy: 'Delete'
+      confirmation: 'Are you sure you want to delete this event?'
+      create: 'Add event'
+    images:
+      image: 'Image'
+      edit: 'Edit image'
+      destroy: 'Delete'
+      confirmation: 'Are you sure you want to delete this picture?'
+    reviews:
+      review: 'Your rate'
+      submit: 'Send'
+      title: 'Rating'
+    comments:
+      title: 'User camments'
+      edit: 'Edit'
+      destroy: 'Delete'
+      confirmation: 'Are you sure you want to delete this comment?'
+      unlike: 'Like'
+      like: 'Unlike'
+      one_like: 'Like'
+      many_likes: 'Likes'
+      submit: 'Send'
+
+  comment:
+    edit_title: 'Edit comment'
+
+  transactions:
+    title: 'Money transfer'
+    submit: 'Transfer'
+    confirmation: 'Confirm funds transfer'
+
+  person:
+    banned: 'Забанен'
+
+  event:
+    name: 'Event'
+    description: 'Description'
+    back_to_project: 'Back to project'
+
+  profile:
+    title: 'Profile'
+    user_bonuses: 'User bonuses'
+    user_bonus_name: 'Name'
+    user_bonus_description: 'Description'
+    name: 'Username'
+    email: 'Email'
+    balance: 'Balance'
+    add_balance: 'Replenish balance'
+    currency: 'c.u.'
+    give_permission: 'Give permission'
+    take_away_permission: 'Take away permission'
+    ban: 'Ban'
+    unban: 'Unban'
+    destroy: 'Delete user'
+    confirmation: 'Are you sure you want to delete this user'
+    title_edit: 'Edit'
+    edit: 'Edit data'
+    projects: 'User projects'
+
+    project:
+      edit: 'Edit'
+      destroy: 'Delete'
+      confirmation: 'Are you sure you want to delete this project?'
+      create: 'Create project'
+      create_with_user: 'Create with user'
+
+  tagged:
+    title: 'Projects with tag'
+    name: 'Name'
+    description: 'Description'
+
+  will_paginate:
+    previous_label: '&larr; Previous'
+    next_label: 'Next &rarr;'
+
+  button_text:
+    new_project: 'Create project'
+    edit_project: 'Edit project'
+    edit_project_image: 'Edit image'
+    new_event: 'Share'
+    edit_event: 'Edit'
+
+  add_balance:
+    title: 'Replenish balance'
+    submit: 'Replenish'
+    confirmation: 'Confirm replenishment'
+  user:
+    sign_up: 'Rigistranion'
+    sign_up_submit: 'Register'
+    sign_in: 'Log In'
+    sign_in_submit: 'Log In'
+    edit: 'Edit User'
+    edit_submit: 'Edit'
+    destroy: 'Delete this account'
+    confirmation: 'Are you sure you want to delete this account?'
+    happy: 'Unhappy'
+    back: 'Back'
+    password_hint: 'characters minimum'
+    reset_password_submit: 'Send me reset password instructions'
+    user_link:
+      sign_in: 'Log in'
+      sign_up: 'Sign up'
+      forgot_password: 'Forgot password?'
+      confirm_instructions: 'Didn’t receive confirmation instructions?'
+      unlock__instructions: 'Didn’t receive unlock instructions?'
+      sign_in_with: 'Log in with'
   errors:
     messages:
       carrierwave_processing_error: "Cannot resize image."
@@ -37,3 +196,26 @@ en:
       carrierwave_download_error: "Couldn't download image."
       extension_whitelist_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
       extension_blacklist_error: "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
+    title: 'Some errors were found'
+
+  flash:
+    comments:
+      update: 'Comment updated'
+    likes:
+      already_liked: 'You cant like more then once'
+      cannot_unlike: 'You cant delete like'
+    persons:
+      create_user_project: 'Your project has been saved'
+    project_images:
+      update: 'Image successfuly changed'
+    projects:
+      create: 'Project saved'
+      update: 'Project updated'
+      destroy: 'Project deleted'
+    reviews:
+      create: 'You cant rate twice'
+    user_bonuses:
+      create: 'Your wallet is empty'
+      user_has_bonuse: 'You already have this bonus'
+      user_exist: 'Sign in first'
+

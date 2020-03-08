@@ -2,15 +2,15 @@
 	<a id="comment-page" href="<%= project_event_path(@project, event) %>">
 		<p>
 			<section><%= image_tag(event.image.url, alt:'Avatar', id:'event_image') if event.image? %></section>
-			<section>Заголовок: <%= event.title %></section>
+			<section><%= t("project.news.name") %>: <%= event.title %></section>
 			<% if user_signed_in? && (item_owner?(@project) || user_admin?(@user)) %>
-				<%= link_to "Редактировать", edit_project_event_path(@project, event) %>
-				<%= link_to "Удалить", project_event_path(@project, event), data: {confirm: "Confirm you want to do this"}, method: :delete %>
+				<%= link_to t("project.news.edit"), edit_project_event_path(@project, event) %>
+				<%= link_to t("project.news.destroy"), project_event_path(@project, event), data: {confirm: "#{t("project.news.confirmation")}"}, method: :delete %>
 			<% end %>
 		</p>
 	</a>
 	<hr>
 <% end %>
 <% if user_signed_in? && (item_owner?(@project) || user_admin?(@user)) %>
-	<%= link_to "Добавить новость", new_project_event_path(@project), class:"btn btn-primary" %>
+	<%= link_to t("project.news.create"), new_project_event_path(@project), class:"btn btn-primary" %>
 <% end %>

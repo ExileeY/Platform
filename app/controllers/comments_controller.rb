@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
 		@comment = Comment.find(params[:id])
 		@project = @comment.project
 		if @comment.update_attributes(comment_params)
-			flash[:success] = "Comment has been updated"
+			flash[:success] = t("flash.comments.update")
 			redirect_to project_path(@project)
 		else
 			render 'edit'

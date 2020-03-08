@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
 	
 	def create
 		if user_has_review?
-			flash[:notice] = "You cant did it again"
+			flash[:notice] = t("flash.reviews.create")
 			redirect_to project_path(@project)
 		else
 			@review = current_user.reviews.new(review_params)

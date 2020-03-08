@@ -1,6 +1,6 @@
-<% provide(:button_text, "Поделиться") %>
+<% provide(:button_text, t("button_text.new_event")) %>
 <% provide(:event_form_url, project_events_path(@project)) %>
 
-<h1>Новость</h1>
+<h1><%= t("event.name") %></h1>
 
 <%= render 'form' %>

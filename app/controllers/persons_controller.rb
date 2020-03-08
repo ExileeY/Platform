@@ -55,7 +55,7 @@ class PersonsController < ApplicationController
             @project.project_images.create!(:image => image, :project_id => @project.id)
         end
       end
-      flash[:success] = "Your project has been saved"
+      flash[:success] = t("flash.persons.create_user_project")
       redirect_to project_path(@project)
     else
       render 'new_user_project'

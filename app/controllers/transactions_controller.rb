@@ -14,11 +14,13 @@ class TransactionsController < ApplicationController
 		if @user_balance < @donate.money
 			render 'new'
 		else
-			@donate.save
-			@project_donate = @donate.money
-			@user.update_attributes(balance: (@user_balance - @project_donate))
-			@project.update_attributes(money_donated: @project_money + @project_donate )
-			redirect_to @project
+			ActiveRecord::Base.transaction do
+				@donate.save
+				@project_donate = @donate.money
+				@user.update_attributes(balance: (@user_balance - @project_donate))
+				@project.update_attributes(money_donated: @project_money + @project_donate )
+				redirect_to @project
+			end
 		end
 	end
 

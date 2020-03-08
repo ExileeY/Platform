@@ -9,7 +9,7 @@ class ProjectImagesController < ApplicationController
 	def update
 		if current_user == @project_owner || admin?
 			if @project_image.update_attributes(project_image_params)
-				flash[:success] = "Image was successfuly updated"
+				flash[:success] = t("flash.project_images.update")
 				redirect_to @project_image.project
 			else
 				render 'edit'

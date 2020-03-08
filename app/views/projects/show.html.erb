@@ -3,22 +3,22 @@
 <div class="container">
 		<div class="bonus-content text-center">
 			<%if @bonuses.any?%>
-				<h3>Бонусы</h3>
+				<h3><%= t("project.bonuses.title") %></h3>
 			<%end%>
 			<%= render 'bonuses' %>
 		</div>
 		<div class="event-content text-center">
 			<%if @events.any?%>
-				<h3>Новости</h3>
+				<h3><%= t("project.news.title") %></h3>
 			<%end%>
 			<%= render 'events/news' %>
 		</div>
-	<h1>Проект: <%= @project.title %></h1>
-	<h3>Тематика:<%= @project.theme %></h3>
-	<h3>Описание:<%= @project.description %></h3>
+	<h1><%= t("project.title") %>: <%= @project.title %></h1>
+	<h3><%= t("project.category") %>:<%= @project.theme %></h3>
+	<h3><%= t("project.description") %>:<%= @project.description %></h3>
 	<h3>
 		<div class="tags">
-			Тэги:
+			<%= t("project.tags") %>:
 			<% @project.tag_list.each do |tag| %>
 				<%= link_to tag, tagged_path(tag: tag), class: 'tag' %>
 			<% end %>
@@ -26,12 +26,12 @@
 	</h3>
 	<h3>
 		<span>
-			Пожертвованно: <%= @project.money_donated %> у.е. 
+			<%= t("project.donated") %>: <%= @project.money_donated %> <%= t("project.currency") %> 
 			<%if user_signed_in?%>
-				<%= link_to 'Поддержать проект', new_project_transaction_path(@project), class: 'btn btn-primary' %>
+				<%= link_to t("project.donate_button"), new_project_transaction_path(@project), class: 'btn btn-primary' %>
 			<%end%>
 		</span>
-		<span class="project-data">Целевая сумма: <%= @project.money_need %> у.е.</span>
+		<span class="project-data"><%= t("project.money_need") %>: <%= @project.money_need %> <%= t("project.currency") %></span>
 	</h3>
 	<% status = (@project.money_donated/@project.money_need)*100 %>
 	<div class="progress" style="width: 95%;">
@@ -42,7 +42,7 @@
 	</div>
 
 	<% if !@project.video_url.nil? && @project.video_url.include?("https://www.youtube.com/watch?v=")%>
-		<h3>Видео:</h3>
+		<h3><%= t("project.video") %>:</h3>
 		<div align="center">
 			<% video_id = @project.video_url.sub('https://www.youtube.com/watch?v=', '').split('&')[0] %>
 			<iframe id="player" type="text/html" width="640" height="360"
@@ -51,30 +51,30 @@
 			</iframe>
 		</div>
 	<% end %>
-
+	<h3><%= t("project.image") %></h3>
 	<% @project_images.each do |pr_i| %>
 		<%= image_tag(pr_i.image.url, alt: 'Image', id:"galary_image") if pr_i.image?%>
 		<%if user_signed_in? && (current_user == @project_owner || user_admin?(@user))%>
-			<p class="text-center">
-				<%= link_to "Изменить картинку", edit_project_image_path(pr_i), class:"btn btn-primary" %>
-				<%= link_to "Удалить", pr_i, data: {confirm: "Confirm you want to delete image"}, class:"btn btn-danger", method: :delete %>
+			<p class="text-center" style="margin: 20px 0;">
+				<%= link_to t("project.images.edit"), edit_project_image_path(pr_i), class:"btn btn-primary" %>
+				<%= link_to t("project.images.destroy"), pr_i, data: {confirm: "#{t("project.images.confirmation")}"}, class:"btn btn-danger", method: :delete %>
 			</p>
 		<% end %>
 	<% end %>
 
 	<h3>
-		<span>Создал пользователь: <%= link_to @project.user.username, profile_path(@project.user.id) %></span>
-		<span class="project-data">Дата окончания: <%= @project.end_date  %></span>
+		<span><%= t("project.user") %>: <%= link_to @project.user.username, profile_path(@project.user.id) %></span>
+		<span class="project-data"><%= t("project.end_date") %>: <%= @project.end_date  %></span>
 	</h3>
 
 	<% if user_signed_in? %>
 		<p><%= render 'reviews/form' if !current_user_has_review? %></p>
 		<% if @user_review != nil %>
-			<div class="review-rating" data-score="<%= @user_review.rating %>"><span>Ваша оценка: </span></div>
+			<div class="review-rating" data-score="<%= @user_review.rating %>"><span><%= t("project.reviews.review") %>: </span></div>
 		<% end %>
 	<% end %>
 	
-	<h4 align="center">Комментарии пользователей</h4>
+	<h4 align="center"><%= t("project.comments.title") %></h4>
 	
 	<div class="col">
 		<div class="message-content">

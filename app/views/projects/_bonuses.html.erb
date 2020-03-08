@@ -1,21 +1,21 @@
 <% @bonuses.each do |bonus| %>
 	<p>
 		<section>
-			<span>Название: <%=bonus.name%></span>
+			<span><%= t("project.bonuses.name") %>: <%=bonus.name%></span>
 		</section>
 		<section>
-			<span>Описание: <%=bonus.description%></span>
+			<span><%= t("project.bonuses.description") %>: <%=bonus.description%></span>
 		</section>
 		<section>
-			<span>Цена: <%=bonus.price%> у.е.</span>
+			<span><%= t("project.bonuses.price") %>: <%=bonus.price%> <%= t("project.currency") %></span>
 		</section>
 		<% if user_signed_in?%>
 			<section>
 				<% if UserBonus.where(user_id: @user.id, bonus_id: bonus.id).exists? %>
-					<p>Done!</p>
+					<p><%= t("project.bonuses.status") %>!</p>
 				<% else %>
 					<span>
-						<%= link_to "Поддержать", user_bonus_create_path(bonus), data: {confirm: "С баланса спишется #{bonus.price} у.е."}, class: 'btn btn-primary' %>
+						<%= link_to t("project.bonuses.get_bonus"), user_bonus_create_path(bonus), data: {confirm: "#{t("project.bonuses.confirmation")} #{bonus.price} #{t("project.currency")}"}, class: 'btn btn-primary' %>
 					</span>
 				<% end %>
 			</section>

@@ -1,35 +1,40 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Краудфандинг</a>
+      <a class="navbar-brand" href="/"><%= t("nav_bar.home") %></a>
     </div>
-    <form class="navbar-form navbar-left" action="/action_page.php">
+    <%= form_tag "", url: projects_path, role: 'search', method: :get, class: "navbar-form navbar-left" do %>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Поиск">
+        <%= text_field_tag :search, @search_term, placeholder: t("nav_bar.search"), class: "btn btn-default" %>
       </div>
-      <button type="submit" class="btn btn-default">Отправить</button>
-    </form>
+    <% end %>
     <ul class="nav navbar-nav navbar-left">
       <% if cookies[:moon] %>
-        <li><a href="/sun">Светлая тема</a></li>
+        <li><a href="/sun"><%= t("nav_bar.light") %></a></li>
       <%else%>
-        <li><a href="/moon">Темная тема</a></li>
+        <li><a href="/moon"><%= t("nav_bar.dark") %></a></li>
       <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if !user_signed_in? %>
-        <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> <%= t("nav_bar.reg") %></a></li>
+        <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> <%= t("nav_bar.login") %></a></li>
       <% else %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= current_user.username %> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/profile/<%=current_user.id%>">Профиль</a></li>
+            <li><a href="/profile/<%=current_user.id%>"><%= t("nav_bar.user.profile") %></a></li>
             <li class="divider"></li>
-            <li><a href="<%= destroy_user_session_url %>" data-method="delete">Выход</a></li>
+            <li><a href="<%= destroy_user_session_url %>" data-method="delete"><%= t("nav_bar.user.exit") %></a></li>
           </ul>
         </li>
       <% end %>
+      <li class="nav-item<%= " active" if I18n.locale == :ru%>">
+        <%= link_to "Рус", {locale: :ru}, class: "nav-link"%>
+      </li>
+      <li class="nav-item<%= " active" if I18n.locale == :en%>">
+        <%= link_to "Eng", {locale: :en}, class: "nav-link"%>
+      </li>
     </ul>
   </div>
 </nav>

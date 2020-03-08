@@ -9,9 +9,11 @@ class AddBalancesController < ApplicationController
 	def create
 		@add_balance = @user.add_balances.new(add_balance_params)
 		@user_balance = @user.balance
-		@add_balance.save
-		@user.update_attributes(balance: (@user_balance + @add_balance.money))
-		redirect_to profile_path(@user)
+		ActiveRecord::Base.add_balance do
+			@add_balance.save
+			@user.update_attributes(balance: (@user_balance + @add_balance.money))
+			redirect_to profile_path(@user)
+		end
 	end
 
 	private

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	include Pundit
   	protect_from_forgery
+  	before_action :set_locale
 	before_action :user_banned, only: [:index,:new,:create,:edit,:update,:show,:profile,:new_user_project]
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -33,5 +34,15 @@ class ApplicationController < ActionController::Base
 			if user_signed_in? && current_user.banned == true
 				render "persons/ban_page"
 			end
+		end
+
+	private
+
+		def set_locale
+			I18n.locale = params[:locale] || I18n.default_locale
+		end
+
+		def default_url_options(options = {})
+			{locale: I18n.locale}.merge options
 		end
 end

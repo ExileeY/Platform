@@ -11,7 +11,35 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     # Examples
-    # labels:
+    labels:
+      project:
+        title: 'Title'
+        description: 'Description'
+        theme: 'Category'
+        tag_list: 'Tags'
+        video_url: 'Video'
+        money_need: 'Target money value'
+        end_date: 'End date'
+      bonuses:
+        name: 'Name'
+        description: 'Description'
+        price: 'Price'
+      comment:
+        body: 'Comment'
+      transaction:
+        money: 'Money'
+      event:
+        title: 'Title'
+        body: 'Description'
+      add_balance:
+        money: 'Money'
+      user:
+        username: 'Username'
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+        remember_me: 'remember me'
+        current_password: 'Current password'
     #   defaults:
     #     password: 'Password'
     #   user:
@@ -19,7 +47,21 @@ en:
     #       email: 'E-mail to sign in.'
     #     edit:
     #       email: 'E-mail.'
-    # hints:
+    hints:
+      project:
+        tag_list: 'rails, development'
+        video_url: 'Paste video url here'
+        money_need: 'c.u.'
+      bonuses:
+        price: 'c.u.'
+      transaction:
+        money: 'Type value you want'
+      add_balance:
+        money: 'Type value you want'
+      user:
+        edit:
+          password: 'leave it blank if you don`t want to change'
+          current_password: 'we need your current password to confirm your changes'
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'

@@ -1,10 +1,10 @@
 <section>
-		<%= f.input :name, label: "Название" %>
-		<%= f.input :description, label: "Описание" %>
-		<%= f.input :price, label: "Цена", placeholder: "у.е." %>
+		<%= f.input :name %>
+		<%= f.input :description %>
+		<%= f.input :price %>
 	<td>
 		<%= f.input_field :_destroy, as: :hidden %>
-		<%= link_to 'Удалить', '#', class: 'remove_record btn btn-default' %>
+		<%= link_to t("project.bonuses.destroy"), '#', class: 'remove_record btn btn-default' %>
 	</td>
 	<hr>
 </section>

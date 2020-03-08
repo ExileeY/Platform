@@ -1,6 +1,6 @@
-<% provide(:button_text, "Изменить") %>
+<% provide(:button_text, t("button_text.edit_event")) %>
 <% provide(:event_form_url, project_event_path(@project)) %>
 
-<h1>Новость</h1>
+<h1><%= t("event.name") %></h1>
 
 <%= render 'form' %>

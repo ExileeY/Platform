@@ -1,9 +1,9 @@
-<h1>Проекты с тегом: <%= params[:tag] %></h1>
-<div class="container list">
+<h1><%= t("tagged.title") %>: <%= params[:tag] %></h1>
+<div class="container list text-center">
 	<table class="table table-striped">
 		<thead>
-			<th class="text-center">Название</th>
-			<th class="text-center">Описание</th>
+			<th class="text-center"><%= t("tagged.name") %></th>
+			<th class="text-center"><%= t("tagged.description") %></th>
 		</thead>
 		<%@projects.each do |project|%>	
 			<tbody>	
@@ -18,4 +18,5 @@
 			</tbody>
 		<%end%>
 	</table>
+	<%= will_paginate @projects if params[:tag] == nil%>
 </div>

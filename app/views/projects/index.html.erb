@@ -2,41 +2,41 @@
 	<div class="main-background"></div>
 		<div class="main-text">
 			<h1>
-				Краудфандинг в Беларуси
-				<p>платформа для финансирования бизнес-проектов, новых технологий, творчества и социальных инициатив.</p>
+				<%= t("main.title") %>
+				<p> <%= t("main.description") %> </p>
 			</h1>
 
-			<h3>Здесь вы получите инструменты для проведения сбора, консультации и поддержку.</h3>
-			<%= link_to "Создать проект", new_project_path, class:"btn btn-success" %>
+			<h3> <%= t("main.about") %> </h3>
+			<%= link_to t("main.create"), new_project_path, class:"btn btn-success" %>
 		</div>
 </div>
 
 <div class="container text-center">
-	<h3>Облако тегов</h3>
+	<h3> <%= t("main.tags") %> </h3>
 	<% @tags.each do |tag| %>
 		<span class="tags">
 			<%= link_to tag, tagged_path(tag: "#{tag}"), class: 'tag' %>
 		</span>
 	<% end %>
 	<%if @projects.any?%>
-		<h3>Проекты
+		<h3> <%= t("main.projects") %>
 				<div class="dropdown sort-dropdown">
 				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    Сортировать
+				    <%= t("main.sort") %>
 				    <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				    <li><a href="/created_at_sort">по новым проектам</a></li>
-				    <li><a href="/updated_at_sort">по недавно изменённым проектам</a></li>
-				    <li><a href="/rating_sort">по рейтингу</a></li>
+				    <li><a href="/created_at_sort"> <%= t('main.by_create_at') %> </a></li>
+				    <li><a href="/updated_at_sort"><%= t("main.by_update_at") %></a></li>
+				    <li><a href="/rating_sort"><%= t("main.by_rating") %></a></li>
 				  </ul>
 				</div>
 		</h3>
 		<div class="scroll-bar list">
 			<table class="table table-striped">
 				<tr>
-					<th class="text-center">Название</th>
-					<th class="text-center">Рейтинг</th>
+					<th class="text-center"> <%= t("main.name") %> </th>
+					<th class="text-center"> <%= t("main.rating") %> </th>
 				</tr>
 				<%= will_paginate @projects %>
 				<% @projects.each do |project| %>
