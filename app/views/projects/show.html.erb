@@ -1,6 +1,9 @@
 <%provide(:comment_form_url, project_comments_path(@project))%>
 
 <div class="container">
+
+	<h1><%= t("project.title") %>: <%= @project.title %></h1>
+	<div style="display: block;">
 		<div class="bonus-content text-center">
 			<%if @bonuses.any?%>
 				<h3><%= t("project.bonuses.title") %></h3>
@@ -13,7 +16,7 @@
 			<%end%>
 			<%= render 'events/news' %>
 		</div>
-	<h1><%= t("project.title") %>: <%= @project.title %></h1>
+	</div>
 	<h3><%= t("project.category") %>:<%= @project.theme %></h3>
 	<h3><%= t("project.description") %>:<%= @project.description %></h3>
 	<h3>

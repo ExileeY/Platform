@@ -11,7 +11,7 @@ class UserBonusesController < ApplicationController
 			redirect_to profile_path(@user)
 		else
 				@money_donated = @project.money_donated
-			ActiveRecord::Base.user_bonus do
+			ActiveRecord::Base.transaction do
 				@user.update_attributes(balance: @balance - @price)
 				@project.update_attributes(money_donated: @money_donated + @price)
 				@user.user_bonuses.create(bonus_id: @bonus.id)

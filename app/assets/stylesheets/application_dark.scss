@@ -36,9 +36,8 @@ div {
         font-weight: bold;
         border: 1px solid #f1f1f1;
         position: absolute;
-        top: 37%;
-        left: 51%;
-        transform: translate(-50%, -50%);
+        left: 20.9%;
+        transform: translate(0,-130%);
         z-index: 2;
         width: 60%;
         padding: 30px;
@@ -85,11 +84,10 @@ div {
     }
 
     .event-content {
-        display: block;
-        position: absolute;
-        padding: 10px;
-        margin-top: 0px;
-        margin-left: 65%;
+        position: relative;
+        padding: 5px;
+        margin-left: 50%;
+        transform: translate(0, -75%);
         border: 1px solid black;
         border-radius: 5px;
         box-sizing: inherit;
@@ -103,11 +101,11 @@ div {
     }
 
     .bonus-content {
-        display: block;
-        position: absolute;
+        position: relative;
+        transform: translate(0, 30%);
+        
         padding: 5px;
-        margin-top: 0px;
-        left: 15px;
+        margin-left: 15%;
         border: 1px solid black;
         border-radius: 5px;
         box-sizing: inherit;
@@ -122,8 +120,8 @@ div {
 
     .sort-dropdown {
         display:inline-block;
-        left:85%;
-        top:66%;
+        left: 84.8%;
+        transform: translate(0, 4.5em);
         position:absolute
     }
     
@@ -137,8 +135,9 @@ div {
 
     .user-bonuses {
         position: absolute;
-        top: 8%;
-        right: 20%;
+        transform: translate(0,-20%);
+        /*top: 8%;*/
+        left: 6%;
         text-align: center;
         border: solid grey 4px;
         border-radius: 4px;
@@ -152,6 +151,9 @@ div {
           border-right: 2px solid;
           color: #A9A9A9;
       }
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 }
 
