@@ -261,8 +261,10 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, "2519144151678841", "3d324b622f92ab90f5cff111a095a3cc"
-    provider :vkontakte, '7316838', 'HRBPbweWcLOccegKgLVC',
+    provider :facebook, Rails.application.credentials.facebook[:app_id],
+                        Rails.application.credentials.facebook[:app_secret_key]
+    provider :vkontakte, Rails.application.credentials.vkontakte[:app_id],
+                         Rails.application.credentials.vkontakte[:app_secret_key],
              scope: 'offline, email'
   end
 
